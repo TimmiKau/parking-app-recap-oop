@@ -23,7 +23,7 @@ Status
 5 Timmi
 Costomer
 ParkinsSpot
-ParkingApp 
+ParkingApp
 
 
 

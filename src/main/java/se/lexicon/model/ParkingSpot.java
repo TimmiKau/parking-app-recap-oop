@@ -16,17 +16,51 @@ public class ParkingSpot {
     private boolean occupied;
 
     // TODO: Add constructors
+    public ParkingSpot(Integer spotNumber, Integer areaCode, boolean occupied) {
+        this.spotNumber = spotNumber;
+        this.areaCode = areaCode;
+        this.occupied = occupied;
+    }
 
     // TODO: Add getters and setters
+    public Integer getSpotNumber() {
+        return spotNumber;
+    }
 
+    public void setSpotNumber(Integer spotNumber) {
+        this.spotNumber = spotNumber;
+    }
+
+    public Integer getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(Integer areaCode) {
+        this.areaCode = areaCode;
+    }
+
+    public boolean isOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        this.occupied = occupied;
+    }
     // TODO: Add toString() if needed
-
+    @Override
+    public String toString() {
+        return "ParkingSpot{" +
+                "spotNumber=" + spotNumber +
+                ", areaCode=" + areaCode +
+                ", occupied=" + occupied +
+                '}';
+    }
     /**
      * Marks the parking spot as occupied.
      * This method sets the `occupied` field to true.
      */
     public void occupy() {
-        // TODO: Implement by setting occupied to true
+        this.occupied = true;
     }
 
     /**
@@ -34,6 +68,6 @@ public class ParkingSpot {
      * This method sets the `occupied` field to false.
      */
     public void vacate() {
-        // TODO: Implement by setting occupied to false
+        this.occupied = false;
     }
 }

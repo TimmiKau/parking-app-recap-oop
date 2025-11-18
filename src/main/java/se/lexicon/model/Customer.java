@@ -18,8 +18,54 @@ public class Customer {
     private String vehiclePlatNumber;
 
     // TODO: Add constructors
-
+    public Customer(Integer id, String name, String phoneNumber, String vehiclePlateNumber) {
+        this.id = id; // Connect to sequence! Otherwise they get no id
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.vehiclePlatNumber = vehiclePlateNumber;
+    }
     // TODO: Add getters and setters
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getVehiclePlateNumber() {
+        return vehiclePlatNumber;
+    }
+
+    public void setVehiclePlateNumber(String vehiclePlatNumber) {
+        this.vehiclePlatNumber = vehiclePlatNumber;
+    }
+
     // TODO: Add toString() method if needed
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", vehiclePlateNumber='" + vehiclePlatNumber + '\'' +
+                '}';
+    }
 }
