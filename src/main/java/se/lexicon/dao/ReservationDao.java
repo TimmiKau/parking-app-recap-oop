@@ -12,6 +12,5 @@ public interface ReservationDao {
 
     List<Reservation> findAll();
 
-
     void update(Reservation reservation);
 }
