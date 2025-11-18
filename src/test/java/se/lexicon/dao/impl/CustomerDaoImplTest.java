@@ -2,6 +2,7 @@ package se.lexicon.dao.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import se.lexicon.model.Customer;
 
 /**
  * Test suite for CustomerDaoImpl.
@@ -23,6 +24,7 @@ class CustomerDaoImplTest {
     @BeforeEach
     void setUp() {
         // TODO: Initialize testObject before each test
+        testObject = new CustomerDaoImpl();
     }
 
     /**
@@ -33,6 +35,8 @@ class CustomerDaoImplTest {
     @Test
     void shouldCreateAndStoreCustomerSuccessfully() {
         // TODO: Arrange, Act, Assert
+        Customer customer = new Customer();
+        //customer.setName("Alice");
     }
 
     /**
