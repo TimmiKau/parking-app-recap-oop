@@ -1,5 +1,9 @@
 package se.lexicon.model;
 
+import se.lexicon.dao.sequencer.CustomerIdSequencer;
+
+import static se.lexicon.dao.sequencer.CustomerIdSequencer.nextId;
+
 /**
  * Represents a customer who uses the parking reservation system.
  * <p>
@@ -18,11 +22,11 @@ public class Customer {
     private String vehiclePlatNumber;
 
     // TODO: Add constructors
-    public Customer(Integer id, String name, String phoneNumber, String vehiclePlateNumber) {
-        this.id = id; // Connect to sequence! Otherwise they get no id
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.vehiclePlatNumber = vehiclePlateNumber;
+    public Customer(String name, String phoneNumber, String vehiclePlateNumber) {
+        this.id = nextId();
+        setName(name);
+        setPhoneNumber(phoneNumber);
+        setVehiclePlateNumber(vehiclePlateNumber);
     }
     // TODO: Add getters and setters
 

@@ -17,9 +17,9 @@ public class ParkingSpot {
 
     // TODO: Add constructors
     public ParkingSpot(Integer spotNumber, Integer areaCode, boolean occupied) {
-        this.spotNumber = spotNumber;
-        this.areaCode = areaCode;
-        this.occupied = occupied;
+        setSpotNumber(spotNumber);
+        setAreaCode(areaCode);
+        setOccupied(occupied);
     }
 
     // TODO: Add getters and setters
