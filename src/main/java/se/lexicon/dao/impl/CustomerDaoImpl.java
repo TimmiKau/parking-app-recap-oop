@@ -29,16 +29,17 @@ public class CustomerDaoImpl implements CustomerDao {
     public  ArrayList<Customer> findAll() {
         return new ArrayList<>(customers);
     }
-
+/*
+    //not correct need getters and setters in Customer class
     public HashMap<Integer, Customer> getCustomerOptional() {
         for (Customer customer : customers) {
-            if (customer.getId() == ()) {
+            if (customer.getId() == id) {
                 return customerOptional;
             }
         }
         return null;
     }
-
+*/
     public Customer deleteCustomer (Customer customer) {
         if (customers.contains(customer)) {
             customers.remove(customer);
