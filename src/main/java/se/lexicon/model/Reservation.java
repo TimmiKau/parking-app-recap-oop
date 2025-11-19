@@ -119,10 +119,13 @@ public class Reservation {
                 ", End time: " + endTime + '\'' + ", Status: " + status + '\'' +
                 ", Parking Spot: " + parkingSpot + '\'' + " Customer: " + customer + '\'';
     }
+
+
     /**
      * Marks the reservation as completed.
      * Changes status from ACTIVE to COMPLETED.
      */
+
     public void complete() {
         // TODO: Implement by setting status to COMPLETED
         if(this.status == Status.ACTIVE) {
