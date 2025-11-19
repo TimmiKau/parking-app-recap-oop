@@ -35,6 +35,9 @@ public class Customer {
     }
 
     public void setId(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("id cannot be null or negative");
+        }
         this.id = id;
     }
 
@@ -43,6 +46,9 @@ public class Customer {
     }
 
     public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("name cannot be null or empty");
+        }
         this.name = name;
     }
 
@@ -51,6 +57,9 @@ public class Customer {
     }
 
     public void setPhoneNumber(String phoneNumber) {
+        if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
+            throw new IllegalArgumentException("phone number cannot be null or empty");
+        }
         this.phoneNumber = phoneNumber;
     }
 
@@ -59,6 +68,9 @@ public class Customer {
     }
 
     public void setVehiclePlateNumber(String vehiclePlatNumber) {
+        if (vehiclePlatNumber == null || vehiclePlatNumber.trim().isEmpty()) {
+            throw new IllegalArgumentException("vehicle plate number cannot be null or empty");
+        }
         this.vehiclePlatNumber = vehiclePlatNumber;
     }
 

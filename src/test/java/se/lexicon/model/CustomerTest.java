@@ -3,6 +3,8 @@ package se.lexicon.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
  * Test class for the Customer model.
  * <p>
@@ -12,16 +14,17 @@ import org.junit.jupiter.api.Test;
  */
 class CustomerTest {
 
-    private Customer testObject;
+    Customer testObject;
 
-    /**
-     * Runs before each test method.
-     * Scenario:
-     * - Prepare a fresh Customer object so test cases do not affect each other.
-     */
     @BeforeEach
     void setUp() {
         // TODO: Initialize testObject with a default Customer instance
+        /**
+         * Runs before each test method.
+         * Scenario:
+         * - Prepare a fresh Customer object so test cases do not affect each other.
+         */
+        testObject = new Customer("Anna", "12345", "123asd");
     }
 
     /**
@@ -32,6 +35,12 @@ class CustomerTest {
     @Test
     void shouldCreateCustomerSuccessfully() {
         // TODO: Arrange, Act, Assert
+        Customer act = testObject;
+
+        assertEquals("Anna", act.getName());
+        assertEquals("12345", act.getPhoneNumber());
+        assertEquals("123asd", act.getVehiclePlateNumber());
+        assertNotNull(act.getId());
     }
 
     /**
@@ -42,6 +51,10 @@ class CustomerTest {
     @Test
     void shouldSetNameWhenNameIsValid() {
         // TODO: Arrange, Act, Assert
+        Customer act = testObject;
+
+        act.setName("Anna");
+        assertEquals("Anna", act.getName());
     }
 
     /**
@@ -52,6 +65,11 @@ class CustomerTest {
     @Test
     void shouldNotSetNameWhenNameIsInvalid() {
         // TODO: Arrange, Act, Assert
+
+        Customer act = testObject;
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> testObject.setName(null));
+        assertEquals("name cannot be null or empty", exception.getMessage());
     }
 
     /**
@@ -62,6 +80,11 @@ class CustomerTest {
     @Test
     void shouldSetPhoneNumberWhenValid() {
         // TODO: Arrange, Act, Assert
+
+        Customer act = testObject;
+
+        act.setPhoneNumber("12345");
+        assertEquals("12345", act.getPhoneNumber());
     }
 
     /**
@@ -72,6 +95,10 @@ class CustomerTest {
     @Test
     void shouldNotSetPhoneNumberWhenInvalid() {
         // TODO: Arrange, Act, Assert
+        Customer act = testObject;
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> testObject.setPhoneNumber(null));
+        assertEquals("phone number cannot be null or empty", exception.getMessage());
+
     }
 
     /**
@@ -82,6 +109,9 @@ class CustomerTest {
     @Test
     void shouldSetIdWhenValid() {
         // TODO: Arrange, Act, Assert
+        Customer act = testObject;
+
+        assertNotNull(act.getId());
     }
 
     /**
@@ -92,5 +122,10 @@ class CustomerTest {
     @Test
     void shouldSetVehiclePlateNumberSuccessfully() {
         // TODO: Arrange, Act, Assert
+
+        Customer act = testObject;
+
+        act.setVehiclePlateNumber("12345");
+        assertEquals("12345", act.getVehiclePlateNumber());
     }
 }

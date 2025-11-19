@@ -65,10 +65,15 @@ public class ParkingApp {
         String phone = getInput("Enter phone number: ");
         String plate = getInput("Enter vehicle plate number: ");
 
-        Customer customer = new Customer(name, phone, plate);
-        customerDaoImpl.create(customer);
-
-        System.out.println("Customer registered: " + customer);
+        try {
+            Customer customer = new Customer(name, phone, plate);
+            customerDaoImpl.create(customer);
+            System.out.println("Customer registered: " + customer);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Please try again.");
+        }
     }
 
     private void displayParkingSpots() {
