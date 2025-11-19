@@ -28,6 +28,8 @@ public class ParkingApp {
 
         //Load parkingspot
         loadParkingSpots();
+        //Load some customers
+        loadCustomer();
 
         boolean running = true;
         while (running) {
@@ -143,6 +145,9 @@ public class ParkingApp {
     private void vacateParkingSpot() {
         System.out.println("=== Vacate Parking Spot ===");
 
+        //Find all reservation ( not logged in )
+        System.out.println(reservationDaoImpl.findAll());
+
         //user input of parking spot to free
         String userInput = getInput("Enter Reservation id: ");
 
@@ -180,6 +185,12 @@ public class ParkingApp {
         parkingSpotDaoImpl.create(new ParkingSpot(1, 100, false));
         parkingSpotDaoImpl.create(new ParkingSpot(2, 100, false));
         parkingSpotDaoImpl.create(new ParkingSpot(3, 100, true));
+    }
+    private void loadCustomer() {
+        customerDaoImpl.create(new Customer("Lisa","324234","4334ff"));
+        customerDaoImpl.create(new Customer("Lisa2","324234","4334ff"));
+        customerDaoImpl.create(new Customer("Lisa3","324234","4334ff"));
+        customerDaoImpl.create(new Customer("Lisa4","324234","4334ff"));
     }
 
 }

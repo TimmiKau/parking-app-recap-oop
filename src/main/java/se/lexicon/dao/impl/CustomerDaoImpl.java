@@ -23,7 +23,7 @@ public class CustomerDaoImpl implements CustomerDao {
     //might work, need to know data type, getId, and if ArrayList<Customer> is correct.
     @Override
     public Optional<Customer> findById(int id) {
-        return Optional.ofNullable(customerOptional.get(id));
+        return Optional.ofNullable(customers.get(id));
     }
 
     public  ArrayList<Customer> findAll() {
