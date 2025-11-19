@@ -9,8 +9,7 @@ import java.util.Optional;
 
 
 public class ParkingSpotDaoImpl implements ParkingSpotDao {
-    private List<ParkingSpot> parkingSpots = new ArrayList<>();
-
+    private final List<ParkingSpot> parkingSpots = new ArrayList<>();
 
     @Override
     public ParkingSpot create(ParkingSpot parkingSpot) {

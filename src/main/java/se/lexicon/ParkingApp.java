@@ -19,9 +19,16 @@ public class ParkingApp {
     private final ParkingSpotDaoImpl parkingSpotDaoImpl = new ParkingSpotDaoImpl();
     private final ReservationDaoImpl reservationDaoImpl = new ReservationDaoImpl();
 
+
+
+
     // TODO: needs completions
 
     public void start() {
+
+        //Load parkingspot
+        loadParkingSpots();
+
         boolean running = true;
         while (running) {
             System.out.println("""
@@ -64,14 +71,13 @@ public class ParkingApp {
 
     private void displayParkingSpots() {
         System.out.println("=== Display Available Parking Spots ===");
-
-        //Have to wait for Jan push.
-        System.out.println(parkingSpotDaoImpl.findAvailableSpots());
+        System.out.println(parkingSpotDaoImpl.findAll());
     }
 
     private void reserveParkingSpot() {
+
         System.out.println("=== Reserve Parking Spot ===");
-        displayParkingSpots();
+        System.out.println(parkingSpotDaoImpl.findAvailableSpots());
 
         //Book by CostumerID
         String customerIdInput = getInput("Enter customer ID in: ");
@@ -169,4 +175,11 @@ public class ParkingApp {
         System.out.println(prompt);
         return scanner.nextLine();
     }
+
+    private void loadParkingSpots() {
+        parkingSpotDaoImpl.create(new ParkingSpot(1, 100, false));
+        parkingSpotDaoImpl.create(new ParkingSpot(2, 100, false));
+        parkingSpotDaoImpl.create(new ParkingSpot(3, 100, true));
+    }
+
 }
