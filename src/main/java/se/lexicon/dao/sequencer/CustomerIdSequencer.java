@@ -7,7 +7,7 @@ public class CustomerIdSequencer {
     }
 
     public static int nextId() {
-        return ++currentId;
+        return currentId++;
     }
 
 
