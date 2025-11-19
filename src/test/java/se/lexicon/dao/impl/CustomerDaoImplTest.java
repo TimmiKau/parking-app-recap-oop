@@ -4,6 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import se.lexicon.model.Customer;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * Test suite for CustomerDaoImpl.
  * <p>
@@ -35,8 +42,8 @@ class CustomerDaoImplTest {
     @Test
     void shouldCreateAndStoreCustomerSuccessfully() {
         // TODO: Arrange, Act, Assert
-        Customer customer = new Customer();
-        //customer.setName("Alice");
+        Customer customer = new Customer("Alice", "67495", "647hjf");
+        testObject.create(customer);
     }
 
     /**
@@ -47,6 +54,25 @@ class CustomerDaoImplTest {
     @Test
     void shouldReturnAllCustomers() {
         // TODO: Arrange, Act, Assert
+        Customer  customer1 = new Customer("Alice", "67495", "647hjf");
+        Customer  customer2 = new Customer("Jakob", "17495", "617hjf");
+
+        testObject.create(customer1);
+        testObject.create(customer2);
+
+        List<Customer> customers = new ArrayList<>();
+        customers.add(customer1);
+        customers.add(customer2);
+
+        List<Customer> AllCustomers = testObject.findAll();
+        assertEquals(2, AllCustomers.size());
+
+        assertTrue(AllCustomers.contains(customer1));
+        assertTrue(AllCustomers.contains(customer2));
+
+        assertEquals(customer1, AllCustomers.get(0));
+        assertEquals(customer2, AllCustomers.get(1));
+
     }
 
     /**
@@ -58,6 +84,11 @@ class CustomerDaoImplTest {
     @Test
     void shouldFindCustomerById() {
         // TODO: Arrange, Act, Assert
+        testObject.create(new Customer("Alice", "67495", "647hjf"));
+
+        Optional<Customer> result = testObject.findById(0);
+        assert(result.isPresent());
+        assert("Alice".equals(result.get().getName()));
     }
 
     /**
@@ -68,5 +99,13 @@ class CustomerDaoImplTest {
     @Test
     void shouldDeleteCustomerSuccessfully() {
         // TODO: Arrange, Act, Assert
+        Customer customer = new Customer("Alice", "67495", "67675");
+        testObject.create(customer);
+
+        String message = testObject.deleteCustomer(customer);
+        assertEquals("Customer removed", message);
+
+        String message2 = testObject.deleteCustomer(customer);
+        assertEquals("Customer not found", message2);
     }
 }

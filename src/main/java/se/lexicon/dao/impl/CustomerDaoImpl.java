@@ -40,10 +40,12 @@ public class CustomerDaoImpl implements CustomerDao {
         return null;
     }
 */
-    public Customer deleteCustomer (Customer customer) {
+    public String deleteCustomer (Customer customer) {
         if (customers.contains(customer)) {
             customers.remove(customer);
+            return  "Customer removed";
+        } else {
+            return "Customer not found";
         }
-        return null;
     }
 }
