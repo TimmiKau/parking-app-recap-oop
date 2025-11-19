@@ -137,12 +137,30 @@ public class ParkingApp {
         System.out.println("=== Vacate Parking Spot ===");
 
         //user input of parking spot to free
+        String userInput = getInput("Enter Reservation id: ");
+
         //find spot
+        Optional<Reservation> reservationOpt = reservationDaoImpl. //Enter method that makes sense.
+
         //check if it exist
-        //if its connected to the costumer?
+        if (reservationOpt.isEmpty()) {
+            System.out.println("Reservation ID: " + userInput + " not found!");
+            return;
+        }
+
+        //Get reservation
+        Reservation reservation = reservationOpt.get();
+
         //check if already free
+        if (!reservation.isOcupied){
+            System.out.println("Reservation ID: " + userInput + " is not occupied!");
+        }
+
         //vacate update sparingspot to avaliable.
+        reservation.isOcupid(false);
+
         //Print what happened.
+        System.out.println("You have vacate your parking spot");
     }
 
     private String getInput(String prompt) {
