@@ -37,7 +37,8 @@ public class ParkingApp {
                 case "1" -> registerCustomer();
                 case "2" -> displayParkingSpots();
                 case "3" -> reserveParkingSpot();
-                case "4" -> vacateParkingSpot();
+                case "4" -> {vacateParkingSpot();
+                }
                 case "5" -> {
                     System.out.println("Exiting... Goodbye!");
                     running = false;
@@ -92,7 +93,7 @@ public class ParkingApp {
         int spotNumber = Integer.parseInt(spotInput);
 
         //Add the parkingspot with the parkispotdaoimpl
-        Optional<ParkingSpot>  parkingSpotOpt = ParkingSpotDaoImpl.findBySpotNumber();
+        Optional<ParkingSpot>  parkingSpotOpt = parkingSpotDaoImpl.findBySpotNumber(spotNumber); // Before findBySpotNumber
 
         //check if empty ( correct input )
         if (parkingSpotOpt.isEmpty()) {
@@ -140,7 +141,7 @@ public class ParkingApp {
         String userInput = getInput("Enter Reservation id: ");
 
         //find spot
-        Optional<Reservation> reservationOpt = reservationDaoImpl. //Enter method that makes sense.
+        Optional<Reservation> reservationOpt = reservationDaoImpl.findById(userInput); //Enter method that makes sense.
 
         //check if it exist
         if (reservationOpt.isEmpty()) {
@@ -152,12 +153,12 @@ public class ParkingApp {
         Reservation reservation = reservationOpt.get();
 
         //check if already free
-        if (!reservation.isOcupied){
+        if (!reservation.getParkingSpot().isOccupied()){
             System.out.println("Reservation ID: " + userInput + " is not occupied!");
         }
 
         //vacate update sparingspot to avaliable.
-        reservation.isOcupid(false);
+        reservation.getParkingSpot().setOccupied(false);
 
         //Print what happened.
         System.out.println("You have vacate your parking spot");

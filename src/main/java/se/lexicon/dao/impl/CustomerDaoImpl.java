@@ -16,7 +16,6 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public Customer create(Customer customer) {
-        customer.setId++;
         customers.add(customer);
         return customer;
     }
@@ -30,7 +29,7 @@ public class CustomerDaoImpl implements CustomerDao {
     public  ArrayList<Customer> findAll() {
         return new ArrayList<>(customers);
     }
-
+/*
     //not correct need getters and setters in Customer class
     public HashMap<Integer, Customer> getCustomerOptional() {
         for (Customer customer : customers) {
@@ -40,7 +39,7 @@ public class CustomerDaoImpl implements CustomerDao {
         }
         return null;
     }
-
+*/
     public Customer deleteCustomer (Customer customer) {
         if (customers.contains(customer)) {
             customers.remove(customer);

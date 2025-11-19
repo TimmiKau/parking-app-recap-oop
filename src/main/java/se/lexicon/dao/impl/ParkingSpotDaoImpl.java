@@ -16,7 +16,7 @@ public class ParkingSpotDaoImpl implements ParkingSpotDao {
     public ParkingSpot create(ParkingSpot parkingSpot) {
         for (ParkingSpot slot : parkingSpots){
             if (slot.getSpotNumber().equals(parkingSpot.getSpotNumber())&&
-                    slot.getAreacode().equals(parkingSpot.getAreacode())){
+                    slot.getAreaCode().equals(parkingSpot.getAreaCode())){
                 throw new RuntimeException("Parking slot do exist");
             }
         }
